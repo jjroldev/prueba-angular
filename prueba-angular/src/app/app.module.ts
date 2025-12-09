@@ -6,11 +6,16 @@ import { AppComponent } from './app.component';
 import { AuthComponent } from './views/pages/auth/auth.component';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { LayoutComponent } from './layout/layout.component';
+import { SucursalesComponent } from './views/modules/sucursales/sucursales.component';
+import { SucursalComponent } from './views/modules/sucursal/sucursal/sucursal.component';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthComponent
+    AuthComponent,
+    LayoutComponent,
+    SucursalesComponent,
+    SucursalComponent
   ],
   imports: [
     BrowserModule,
