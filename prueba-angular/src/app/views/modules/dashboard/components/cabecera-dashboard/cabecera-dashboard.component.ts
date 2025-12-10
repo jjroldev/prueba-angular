@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+declare let $: any;
 
 @Component({
   selector: 'app-cabecera-dashboard',
@@ -43,10 +44,19 @@ export class CabeceraDashboardComponent implements OnInit {
     this.isHeaderVisible = !this.isHeaderVisible;
   }
 
+  ngAfterViewInit(): void {
+    $('.dias').select2({
+      width: '100%',
+      placeholder: 'Selecciona un rango',
+      minimumResultsForSearch: Infinity
+    });
+  }
+
   ngOnInit(): void {
-    
+
   }
 
   ngOnDestroy(): void {
+    $('.dias').select2('destroy');
   }
 }

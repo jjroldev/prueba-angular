@@ -1,5 +1,5 @@
 <div class="line">
-    
+
 </div>
 
 <div class="contenedor-informacion" (click)="toggleHeaderVisibility()">
@@ -7,7 +7,8 @@
     <i class="fa" [class.fa-angle-down]="isHeaderVisible" [class.fa-angle-up]="!isHeaderVisible"></i>
 </div>
 
-<div class="cabecera" *ngIf="isHeaderVisible">
+<div class="cabecera" [class.visible]="isHeaderVisible">
+
     <h2>Rango de Días Dashboard</h2>
     <select class="dias">
         <option value="31" selected>Último(s) 31 Día(s)</option>

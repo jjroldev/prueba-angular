@@ -212,13 +212,6 @@ a .tabla {
     color: #6c757d;
 }
 
-.pagination {
-    --bs-pagination-color: #3f63d8;
-    --bs-pagination-hover-color: #0d6efd;
-    --bs-pagination-active-bg: #3f63d8;
-    --bs-pagination-active-border-color: #3f63d8;
-    --bs-pagination-focus-box-shadow: 0 0 0 0.25rem rgba(63, 99, 216, 0.25);
-}
 
 .page-item .page-link {
     border-radius: 50% !important;
@@ -228,11 +221,11 @@ a .tabla {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #3f63d8;
+    color: #36c96c;
     border: 1px solid #dee2e6;
 }
 
 .page-item.active .page-link {
-    background-color: #3f63d8;
+    background: #36c96c; 
     color: white;
 }
