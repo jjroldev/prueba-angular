@@ -35,8 +35,8 @@ export class AuthComponent implements OnInit {
       return;
     }
 
-    const { user, password } = this.loginForm.value;
-    console.log(`Login correcto. Usuario: ${user}`);
+    localStorage.setItem('token_fake', '123456'); // simulacion token
+
     this.router.navigate(['sucursales']);
   }
 }

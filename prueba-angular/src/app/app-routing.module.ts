@@ -6,12 +6,15 @@ import { SucursalesComponent } from './views/modules/sucursales/sucursales.compo
 import { SucursalComponent } from './views/modules/sucursal/sucursal.component';
 import { DashboardComponent } from './views/modules/dashboard/dashboard.component';
 import { SucursalContentComponent } from './views/modules/sucursal/components/sucursal-content/sucursal-content.component';
+import { AuthGuard } from './guards/auth.guard';
+
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'auth' },
   { path: 'auth', component: AuthComponent },
   {
     path: '',
     component: LayoutComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: 'sucursales', component: SucursalesComponent
