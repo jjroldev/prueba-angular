@@ -6,25 +6,27 @@ declare let $: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit, OnDestroy {
+export class DashboardComponent implements OnDestroy, AfterViewInit {
 
-    isHeaderVisible: boolean = true;
+  isHeaderVisible: boolean = true;
 
-    isModalOpen: boolean = false;
-    modalData: any[] = [];
-    modalTitle: string = '';
+  isModalOpen: boolean = false;
+  modalData: any[] = [];
+  modalTitle: string = '';
+  public filtroPrincipal: string = '';
+  public filtroAdicional: string = '';
 
-    stats = {
-        totalMailResgistrados: 493862,
-        totalMailEnviados: 467015,
-        totalMailListaNegra: 23773,
-        totalMailNoDespachado: 2598,
-        totalMailEsperaStatus: 32,
-        totalMailRebotados: 383,
-        totalMailErrorDesconocido: 61
-    };
+  stats = {
+    totalMailResgistrados: 493862,
+    totalMailEnviados: 467015,
+    totalMailListaNegra: 23773,
+    totalMailNoDespachado: 2598,
+    totalMailEsperaStatus: 32,
+    totalMailRebotados: 383,
+    totalMailErrorDesconocido: 61
+  };
 
-    arreglo = [
+  arreglo = [
     {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
@@ -72,7 +74,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -119,7 +121,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -166,7 +168,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -213,7 +215,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -260,7 +262,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -307,7 +309,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -354,7 +356,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -401,7 +403,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -448,7 +450,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -495,7 +497,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -542,7 +544,7 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
       esEnviadoColaFallo: false,
       mensajeErrorStatusMail: null,
       cantIntentosStatusMail: 0
-    },{
+    }, {
       codigoMensaje: "test-0000-1111-2222-objeto-ficticio",
       fechaIngreso: "31/12/2099 23:59:59",
       idEmpresaHomologacion: "empresa-prueba-1234-5678",
@@ -592,45 +594,34 @@ export class DashboardComponent implements AfterViewInit, OnDestroy {
     }
   ]
 
-    openCardModal(cardTitle: string): void {
-        this.modalTitle = cardTitle;
+  openCardModal(cardTitle: string): void {
+    this.modalTitle = cardTitle;
 
-        this.modalData = [
-            { Tipo: cardTitle, Cantidad: this.stats.totalMailResgistrados, Observacion: 'Datos detallados para: ' + cardTitle },
-            { Tipo: 'Email enviado', Cantidad: this.stats.totalMailEnviados, Observacion: 'Cualquier texto' },
-            { Tipo: 'Rebotados', Cantidad: this.stats.totalMailRebotados, Observacion: 'Cualquier texto' }
-        ];
-        this.isModalOpen = true;
-    }
+    this.modalData = [
+      { Tipo: cardTitle, Cantidad: this.stats.totalMailResgistrados, Observacion: 'Datos detallados para: ' + cardTitle },
+      { Tipo: 'Email enviado', Cantidad: this.stats.totalMailEnviados, Observacion: 'Cualquier texto' },
+      { Tipo: 'Rebotados', Cantidad: this.stats.totalMailRebotados, Observacion: 'Cualquier texto' }
+    ];
+    this.isModalOpen = true;
+  }
 
-    closeModal(): void {
-        this.isModalOpen = false;
-    }
+  closeModal(): void {
+    this.isModalOpen = false;
+  }
 
-    toggleHeaderVisibility(): void {
-        this.isHeaderVisible = !this.isHeaderVisible;
-    }
+  toggleHeaderVisibility(): void {
+    this.isHeaderVisible = !this.isHeaderVisible;
+  }
 
-    ngAfterViewInit(): void {
-        $('.dias').select2({
-            width: '100%',
-            placeholder: 'Selecciona un rango'
-        });
+  ngAfterViewInit(): void {
+    $('.dias').select2({
+      width: '100%',
+      placeholder: 'Selecciona un rango'
+    });
+  }
 
-        $('.tipo-filtro').select2({
-            width: '100%',
-            placeholder: 'Ninguno',
-        });
-
-        $('.filtros-adicionales').select2({
-            width: '100%',
-            placeholder: 'Ninguno',
-        });
-    }
-
-    ngOnDestroy(): void {
-        $('.dias').select2('destroy');
-    }
+  ngOnDestroy(): void {
+    $('.dias').select2('destroy');
+  }
 }
 
-  

@@ -1,0 +1,77 @@
+<div class="contenedor-informacion" (click)="toggleHeaderVisibility()">
+    <span>Información general</span>
+    <i class="fa" [class.fa-angle-down]="isHeaderVisible" [class.fa-angle-up]="!isHeaderVisible"></i>
+</div>
+
+<div class="cabecera" *ngIf="isHeaderVisible">
+    <h2>Rango de Días Dashboard</h2>
+    <select class="dias">
+        <option value="31" selected>Último(s) 31 Día(s)</option>
+        <option value="7">Último(s) 7 Día(s)</option>
+        <option value="15">Último(s) 15 Día(s)</option>
+        <option value="60">Último(s) 60 Día(s)</option>
+        <option value="90">Último(s) 90 Día(s)</option>
+        <option value="all">Todos</option>
+    </select>
+
+    <div class="contenedor-cabeceras">
+        <div class="grupo-izquierdo">
+            <div class="card blue" (click)="openCardModal('Email Registrados')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailResgistrados }}</h3>
+                    <p>Email Registrados</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="card green" (click)="openCardModal('Email Enviados')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailEnviados }}</h3>
+                    <p>Email Enviados</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+        </div>
+
+        <div class="grupo-derecho">
+            <div class="card red span-2" (click)="openCardModal('Rebotados')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailRebotados }}</h3>
+                    <p>Rebotados</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="card red span-2" (click)="openCardModal('Lista Negra')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailListaNegra }}</h3>
+                    <p>Lista Negra</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="card red span-2" (click)="openCardModal('Error Desconocido')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailErrorDesconocido }}</h3>
+                    <p>Error Desconocido</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="card yellow span-3" (click)="openCardModal('Email No Despachado')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailNoDespachado }}</h3>
+                    <p>Email No Despachado</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="card yellow span-3" (click)="openCardModal('Email En Espera Status')">
+                <div class="card-text">
+                    <h3>{{ stats.totalMailEsperaStatus }}</h3>
+                    <p>Email En Espera Status</p>
+                </div>
+                <i class="fa-solid fa-envelope"></i>
+            </div>
+        </div>
+    </div>
+
+    <app-modal [isModalOpen]="isModalOpen" [modalTitle]="modalTitle" [modalData]="modalData"
+        (closeRequest)="closeModal()">
+    </app-modal>
+</div>

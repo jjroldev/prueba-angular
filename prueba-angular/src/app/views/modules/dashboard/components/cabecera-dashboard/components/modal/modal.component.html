@@ -1,0 +1,32 @@
+<div *ngIf="isModalOpen" class="modal-backdrop" (click)="closeModal()">
+    <div class="modal-contenido" (click)="$event.stopPropagation()">
+        <div class="modal-cabecera">
+            <span class="cerrar-modal" (click)="closeModal()">
+                <i class="fa-solid fa-xmark"></i>
+            </span>
+        </div>
+        <div class="modal-cuerpo">
+            <h3>Informativo: {{ modalTitle }}</h3>
+            <table class="tabla-modal">
+                <thead>
+                    <tr>
+                        <th class="tipo">Tipo</th>
+                        <th>Cantidad</th>
+                        <th>Observación</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of modalData">
+                        <td>{{ item.Tipo }}</td>
+                        <td>{{ item.Cantidad }}</td>
+                        <td>{{ item.Observacion }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-pie">
+            <button class="btn-aceptar" (click)="closeModal()">Aceptar</button>
+        </div>
+    </div>
+
+</div>

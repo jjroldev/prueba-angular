@@ -1,0 +1,10 @@
+<select class="select-filter"
+        [ngModel]="value"
+        (ngModelChange)="onValueChange($event)">
+
+    <option value="" disabled selected>Ninguno</option>
+
+    <option *ngFor="let opcion of opciones" [value]="opcion.value">
+        {{ opcion.label }}
+    </option>
+</select>
