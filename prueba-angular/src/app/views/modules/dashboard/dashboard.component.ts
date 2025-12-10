@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, OnDestroy, OnInit } from '@angular/core';
 import flatpickr from 'flatpickr';
 
+
 declare let $: any;
 
 @Component({
@@ -8,8 +9,9 @@ declare let $: any;
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnDestroy, AfterViewInit, OnInit { // Implementamos OnInit
+export class DashboardComponent implements OnDestroy, AfterViewInit, OnInit {
 
+  // constructor(private http: HttpClient) { }
   isHeaderVisible: boolean = true;
 
   isModalOpen: boolean = false;
@@ -118,12 +120,12 @@ export class DashboardComponent implements OnDestroy, AfterViewInit, OnInit { //
     let end = Math.min(this.totalPages, start + maxPagesToShow - 1);
 
     if (end - start + 1 < maxPagesToShow) {
-        start = Math.max(1, end - maxPagesToShow + 1);
+      start = Math.max(1, end - maxPagesToShow + 1);
     }
 
     const pages = [];
     for (let i = start; i <= end; i++) {
-        pages.push(i);
+      pages.push(i);
     }
     return pages;
   }
@@ -146,6 +148,26 @@ export class DashboardComponent implements OnDestroy, AfterViewInit, OnInit { //
   toggleHeaderVisibility(): void {
     this.isHeaderVisible = !this.isHeaderVisible;
   }
+
+   buscar(): void {
+    console.log("simulation")
+    // console.log('Realizando consulta...');
+
+    // this.http.get('/api/reporte/emails').subscribe();
+
+    // of(Array(40).fill(this.baseRecord).map((e, i) => ({
+    //   ...e,
+    //   codigoMensaje: `${e.codigoMensaje}-${i + 1}`,
+    //   idTicket: `ticket-${2000 + i}`
+    // })))
+    //   .pipe(delay(1000))
+    //   .subscribe(resp => {
+    //     console.log('Respuesta simulada recibida', resp);
+
+    //     this.arreglo = resp;
+    //     this.initializePagination();
+    //   });
+    }
 
   ngAfterViewInit(): void {
     $('.dias').select2({

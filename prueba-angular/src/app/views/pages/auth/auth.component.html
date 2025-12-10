@@ -22,12 +22,25 @@
                 <label for="password">Contraseña</label>
                 <input id="password" type="password" formControlName="password">
             </div>
-
-            <button class="btn-login" type="submit">
+            <button class="btn-login" type="submit"
+                [ngClass]="{ 'btn-enabled': loginForm.valid, 'btn-disabled': loginForm.invalid }">
                 Continuar
             </button>
 
 
+
         </div>
     </form>
+
+    <div class="modal-fondo" *ngIf="showErrorModal">
+        <div class="modal-box">
+            <h2>Datos incompletos</h2>
+            <p>Debes ingresar usuario y contraseña para continuar.</p>
+
+            <button class="btn-modal" (click)="closeModal()">
+                Entendido
+            </button>
+        </div>
+    </div>
+
 </div>

@@ -11,7 +11,15 @@ export class AuthComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router:Router) { }
+  showErrorModal = false;
+
+
+  closeModal() {
+    this.showErrorModal = false;
+  }
+
+
+  constructor(private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -23,13 +31,12 @@ export class AuthComponent implements OnInit {
   login() {
     if (this.loginForm.invalid) {
       this.loginForm.markAllAsTouched();
-      console.log('Debes llenar usuario y contraseña.');
+      this.showErrorModal = true;
       return;
     }
 
     const { user, password } = this.loginForm.value;
     console.log(`Login correcto. Usuario: ${user}`);
     this.router.navigate(['sucursales']);
-
   }
 }

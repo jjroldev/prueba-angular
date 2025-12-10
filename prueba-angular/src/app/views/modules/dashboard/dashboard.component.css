@@ -75,7 +75,6 @@
     border-radius: 4px;
     font-size: 0.9rem;
     box-sizing: border-box;
-    height: 40px;
     background-color: #fff;
     color: #333;
 }
@@ -107,8 +106,8 @@
 
 .btn-limpiar,
 .btn-buscar {
+    padding: 0.5rem 0.75rem;
     width: 100%;
-    height: 40px;
     border: 1px solid #3f63d8;
     background-color: #fff;
     border-radius: 4px;
@@ -236,33 +235,4 @@ a .tabla {
 .page-item.active .page-link {
     background-color: #3f63d8;
     color: white;
-}
-
-.tabla::-webkit-scrollbar-button {
-    display: none !important;
-    height: 0;
-    width: 0;
-}
-
-.tabla::-webkit-scrollbar {
-    height: 12px;
-}
-
-.tabla::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    border-radius: 6px;
-}
-
-.tabla::-webkit-scrollbar-thumb {
-    background: #36c96c;
-    border-radius: 6px;
-}
-
-.tabla::-webkit-scrollbar-thumb:hover {
-    background: #ffb703;
-}
-
-.tabla {
-    scrollbar-width: thin;
-    scrollbar-color: #36c96c #f1f1f1;
 }

@@ -10,12 +10,12 @@
     width: 700px;
     height: 80%;
     padding: 2rem;
-    background: rgba(255,255,255,0.85);
+    background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(8px);
 
     border-radius: 20px;
-    border: 1px solid rgba(255,255,255,0.35);
-    box-shadow: 0 10px 35px rgba(0,0,0,0.15);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.15);
 }
 
 
@@ -118,11 +118,82 @@
 }
 
 .btn-login:hover {
-    background: #7ee4b3;
     transform: scale(1.01);
 }
 
-.btn-login:active {
-    transform: scale(0.98);
+.btn-enabled {
+    background: #7eefab !important;
 }
 
+.btn-disabled {
+    background: #b9f2d0 !important;
+}
+
+
+
+
+
+
+
+.modal-fondo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.modal-box {
+    width: 380px;
+    padding: 2rem;
+    background: #fff;
+    border-radius: 15px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    animation: showModal .25s ease-out;
+}
+
+.modal-box h2 {
+    margin-bottom: .5rem;
+    font-size: 1.4rem;
+    color: rgb(82, 82, 255);
+}
+
+.modal-box p {
+    font-size: .9rem;
+    margin-bottom: 1.5rem;
+}
+
+.btn-modal {
+    width: 100%;
+    padding: .8rem;
+    border: none;
+    border-radius: 8px;
+    background: rgb(82, 82, 255);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.btn-modal:hover {
+    background: rgb(60, 60, 220);
+    transform: scale(1.02);
+}
+
+@keyframes showModal {
+    from {
+        transform: scale(0.85);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
