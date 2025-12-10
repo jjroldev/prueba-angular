@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 1rem;
+    padding: 2rem 2.5rem;
     background-color: #fff;
     flex: 1;
     gap: 1rem;
@@ -186,7 +186,7 @@ a .tabla {
 
 
 .tabla-dashboard .fa-solid {
-    font-size: 1.1rem;
+    font-size: 1.6rem;
 }
 
 .tabla-dashboard .fa-circle-check {
@@ -202,14 +202,13 @@ a .tabla {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-top: 1rem;
-    position: relative;
+    padding-top: 2.5rem;
+    gap: 1rem;
+    flex-direction: column;
 }
 
 .page-info {
-    position: absolute;
     bottom: 0;
-    right: 0;
     font-size: 0.8rem;
     color: #6c757d;
 }

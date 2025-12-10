@@ -1,9 +1,16 @@
+.line{
+    height: 1px;
+    width: 100%;
+    border-bottom: 1px solid #e1e1e1;
+    margin-bottom: 1rem;
+}
 
 .contenedor-informacion {
     cursor: pointer;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: left;
+    gap: 1rem;
     padding: 1rem;
     font-weight: 600;
     background-color: #535353;
@@ -14,6 +21,8 @@
 
 .contenedor-informacion i {
     transition: transform 0.3s ease;
+    font-size: 1rem;
+    font-weight: 900;
 }
 
 .cabecera,
@@ -22,7 +31,7 @@
 }
 
 .cabecera {
-    padding: 1rem 15rem;
+    padding: 1rem 13rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -76,7 +85,6 @@
     border-radius: 25px;
     color: white;
     font-size: .9rem;
-    gap: 1rem;
     flex-direction: row;
     cursor: pointer;
 }
