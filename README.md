@@ -66,6 +66,7 @@ A continuación, se detallan las funcionalidades implementadas según los requer
 
 - **Maquetación**: Diseño enfocado en la fidelidad visual, incluyendo campos de Usuario y Contraseña.
 - **Ubicación**: `src/app/views/pages/auth`
+- **Auth**: Auth Guard de simulación para rutas privadas.
 
 ---
 <img width="3839" height="1777" alt="image" src="https://github.com/user-attachments/assets/8cb9d2dc-6af8-402e-9612-150a7eff8377" />
