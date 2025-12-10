@@ -1,6 +1,6 @@
 // src/app/components/select-filtro/select-filtro.component.ts
 
-import { Component, Input, Output, EventEmitter, AfterViewInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, AfterViewInit, OnDestroy } from '@angular/core';
 declare let $: any;
 
 interface FiltroOption {
@@ -13,7 +13,7 @@ interface FiltroOption {
   templateUrl: './select-filtro.component.html',
   styleUrls: ['./select-filtro.component.css']
 })
-export class SelectFiltroComponent implements AfterViewInit {
+export class SelectFiltroComponent implements AfterViewInit,OnDestroy {
 
   @Input() value: string = '';
   @Output() valueChange = new EventEmitter<string>();
@@ -74,12 +74,16 @@ export class SelectFiltroComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     $('.select-filter').select2({
       width: '100%',
-      placeholder: 'Selecciona un rango'
+      placeholder: 'Ninguno'
     });
   }
 
   onValueChange(newValue: string): void {
     this.value = newValue;
     this.valueChange.emit(newValue);
+  }
+
+   ngOnDestroy(): void {
+    $('.select-filter').select2('destroy');
   }
 }

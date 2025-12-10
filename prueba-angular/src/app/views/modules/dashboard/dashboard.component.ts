@@ -1,4 +1,6 @@
 import { Component, AfterViewInit, OnDestroy } from '@angular/core';
+import flatpickr from 'flatpickr';
+
 declare let $: any;
 
 @Component({
@@ -617,6 +619,15 @@ export class DashboardComponent implements OnDestroy, AfterViewInit {
     $('.dias').select2({
       width: '100%',
       placeholder: 'Selecciona un rango'
+    });
+    flatpickr(".fecha-desde", {
+      dateFormat: "d/m/Y",
+      defaultDate: "today",
+    });
+
+    flatpickr(".fecha-hasta", {
+      dateFormat: "d/m/Y",
+      defaultDate: "today"
     });
   }
 

@@ -1,8 +1,8 @@
 <div class="dashboard">
-    <app-cabecera-dashboard ></app-cabecera-dashboard>
+    <app-cabecera-dashboard></app-cabecera-dashboard>
     <div class="contenedor-tabla">
-         <div class="opciones">
-            
+        <div class="opciones">
+
             <div class="opcion">
                 <span>Tipo Filtro</span>
                 <app-select-filtro [(value)]="filtroPrincipal"></app-select-filtro>
@@ -20,13 +20,20 @@
 
             <div class="opcion">
                 <span>Fecha Desde</span>
-                <input type="date" class="fecha-desde">
+                <div class="input-fecha-con-icono">
+                    <input type="text" class="fecha-desde" placeholder="Selecciona fecha">
+                    <i class="fa-solid fa-calendar"></i>
+                </div>
             </div>
-            
+
             <div class="opcion">
                 <span>Fecha Hasta</span>
-                <input type="date" class="fecha-hasta">
+                <div class="input-fecha-con-icono">
+                    <input type="text" class="fecha-hasta" placeholder="Selecciona fecha">
+                    <i class="fa-solid fa-calendar"></i>
+                </div>
             </div>
+
 
             <div class="opcion boton-accion">
                 <span>&nbsp;</span>
@@ -88,14 +95,14 @@
                             <td> <i class="fa-solid" [class.fa-circle-check]="item.enviado"
                                     [class.fa-circle-exclamation]="!item.enviado"></i> </td>
 
-                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.error"
-                                    [class.fa-circle-exclamation]="item.error"></i> </td>
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.error"
+                                    [class.fa-circle-exclamation]="!item.error"></i> </td>
 
-                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.esRebotado"
-                                    [class.fa-circle-exclamation]="item.esRebotado"></i> </td>
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.esRebotado"
+                                    [class.fa-circle-exclamation]="!item.esRebotado"></i> </td>
 
-                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.esListaNegra"
-                                    [class.fa-circle-exclamation]="item.esListaNegra"></i> </td>
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.esListaNegra"
+                                    [class.fa-circle-exclamation]="!item.esListaNegra"></i> </td>
 
                             <td> <i class="fa-solid" [class.fa-circle-check]="item.mailAbierto"
                                     [class.fa-circle-exclamation]="!item.mailAbierto"></i> </td>
