@@ -32,3 +32,33 @@ a {
 ul, ol {
   list-style: none;
 }
+
+
+html::-webkit-scrollbar-button {
+    display: none !important;
+    height: 0;
+    width: 0;
+}
+
+html::-webkit-scrollbar {
+    height: 12px; 
+}
+
+html::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #36c96c; 
+    border-radius: 6px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    background: #ffb703;
+}
+
+html {
+    scrollbar-width: thin; 
+    scrollbar-color: #36c96c #f1f1f1; 
+}

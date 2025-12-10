@@ -11,6 +11,7 @@ import { SucursalesComponent } from './views/modules/sucursales/sucursales.compo
 import { SucursalComponent } from './views/modules/sucursal/sucursal.component';
 import { DashboardComponent } from './views/modules/dashboard/dashboard.component';
 import { SucursalContentComponent } from './views/modules/sucursal/components/sucursal-content/sucursal-content.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { SucursalContentComponent } from './views/modules/sucursal/components/su
     BrowserModule,
     AppRoutingModule,
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

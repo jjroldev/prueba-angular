@@ -5,11 +5,6 @@
     flex-direction: column;
 }
 
-.sucursal-body {
-  height: 100%;
-  display: flex;
-}
-
 .sucursal-ayuda{
     padding: 1.2rem 4rem;
     background-color: rgb(48, 202, 127);

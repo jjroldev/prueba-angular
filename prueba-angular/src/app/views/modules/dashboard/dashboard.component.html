@@ -1,11 +1,345 @@
 <div class="dashboard">
+    <div class="contenedor-informacion" (click)="toggleHeaderVisibility()">
+        <span>Información general</span>
+        <i class="fa" [class.fa-angle-down]="isHeaderVisible" [class.fa-angle-up]="!isHeaderVisible"></i>
+    </div>
 
-    <div class="cabecera">
+    <div class="cabecera" *ngIf="isHeaderVisible">
         <h2>Rango de Días Dashboard</h2>
-        
+        <select class="dias">
+            <option value="31" selected>Último(s) 31 Día(s)</option>
+            <option value="7">Último(s) 7 Día(s)</option>
+            <option value="15">Último(s) 15 Día(s)</option>
+            <option value="60">Último(s) 60 Día(s)</option>
+            <option value="90">Último(s) 90 Día(s)</option>
+            <option value="all">Todos</option>
+        </select>
+
+        <div class="contenedor-cabeceras">
+            <div class="grupo-izquierdo">
+                <div class="card blue" (click)="openCardModal('Email Registrados')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailResgistrados }}</h3>
+                        <p>Email Registrados</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card green" (click)="openCardModal('Email Enviados')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailEnviados }}</h3>
+                        <p>Email Enviados</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </div>
+
+            <div class="grupo-derecho">
+                <div class="card red span-2" (click)="openCardModal('Rebotados')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailRebotados }}</h3>
+                        <p>Rebotados</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card red span-2" (click)="openCardModal('Lista Negra')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailListaNegra }}</h3>
+                        <p>Lista Negra</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card red span-2" (click)="openCardModal('Error Desconocido')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailErrorDesconocido }}</h3>
+                        <p>Error Desconocido</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card yellow span-3" (click)="openCardModal('Email No Despachado')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailNoDespachado }}</h3>
+                        <p>Email No Despachado</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <div class="card yellow span-3" (click)="openCardModal('Email En Espera Status')">
+                    <div class="card-text">
+                        <h3>{{ stats.totalMailEsperaStatus }}</h3>
+                        <p>Email En Espera Status</p>
+                    </div>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isModalOpen" class="modal-backdrop" (click)="closeModal()">
+            <div class="modal-contenido" (click)="$event.stopPropagation()">
+                <div class="modal-cabecera">
+                    <span class="cerrar-modal" (click)="closeModal()">
+                        <i class="fa-solid fa-xmark"></i>
+                    </span>
+                </div>
+                <div class="modal-cuerpo">
+                    <h3>Informativo: {{ modalTitle }}</h3>
+                    <table class="tabla-modal">
+                        <thead>
+                            <tr>
+                                <th class="tipo">Tipo</th>
+                                <th>Cantidad</th>
+                                <th>Observación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item of modalData">
+                                <td>{{ item.Tipo }}</td>
+                                <td>{{ item.Cantidad }}</td>
+                                <td>{{ item.Observacion }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-pie">
+                    <button class="btn-aceptar" (click)="closeModal()">Aceptar</button>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <div class="contenedor-tabla">
+        <div class="opciones">
+            <div class="opcion">
+                <span>Tipo Filtro</span>
+                <select class="tipo-filtro select-filter">
+                    <option value="" disabled selected>Ninguno</option>
 
+                    <option value="codigoMensaje">Cód. Mensaje</option>
+                    <option value="idTicket">ID Ticket</option>
+                    <option value="codigoHistoricoMensaje">Cód. Histórico Mensaje</option>
+                    <option value="codigoPlantilla">Cód. Plantilla</option>
+                    <option value="nombrePlantilla">Nombre Plantilla</option>
+                    <option value="origenPlantilla">Origen Plantilla</option>
+                    <option value="codigoHomologacionPlantilla">Cód. Homologación Plantilla</option>
+                    <option value="codigoTipoMensaje">Cód. Tipo Mensaje</option>
+                    <option value="nombreTipoMensaje">Nombre Tipo Mensaje</option>
+                    <option value="claseNotify">Clase Notify</option>
+                    <option value="userIdNotify">Usuario Notify</option>
+                    <option value="idEmpresaHomologacion">ID Empresa Homologación</option>
+
+                    <option value="fechaIngreso">Fecha Ingreso</option>
+                    <option value="fechaEnviado">Fecha Enviado</option>
+                    <option value="fechaMailAbierto">Fecha Mail Abierto</option>
+                    <option value="fechaMailClick">Fecha Mail Click</option>
+                    <option value="fechaError">Fecha Error (Rebote/Fallo)</option>
+
+                    <option value="correoDestinatario">Correo Destinatario</option>
+                    <option value="correoConCopia">Correo Con Copia (CC)</option>
+                    <option value="correoConCopiaOculta">Correo Con Copia Oculta (CCO)</option>
+                    <option value="asunto">Asunto</option>
+
+                    <option value="estado">Estado General</option>
+                    <option value="procesado">Procesado (Sí/No)</option>
+                    <option value="enviado">Enviado (Sí/No)</option>
+                    <option value="error">Error (Sí/No)</option>
+                    <option value="esRebotado">Es Rebotado (Sí/No)</option>
+                    <option value="esListaNegra">Es Lista Negra (Sí/No)</option>
+                    <option value="mailAbierto">Mail Abierto (Sí/No)</option>
+                    <option value="mailClick">Mail Click (Sí/No)</option>
+                    <option value="mensajeError">Mensaje Error (Detalle)</option>
+                    <option value="mensajeErrorDespachoMail">Error Despacho Mail</option>
+                    <option value="mensajeErrorStatusMail">Error Status Mail</option>
+                    <option value="esEnviadoColaFallo">Enviado a Cola Fallo (Sí/No)</option>
+
+                    <option value="origenInvocacion">Origen Invocación</option>
+                    <option value="tieneVariables">Tiene Variables (Sí/No)</option>
+                    <option value="tieneAdjuntos">Tiene Adjuntos (Sí/No)</option>
+                    <option value="cantIntentosDespachoMail">Intentos Despacho Mail</option>
+                    <option value="cantIntentosStatusMail">Intentos Status Mail</option>
+
+                    <option value="pacPacNumero">Número Paciente</option>
+                    <option value="nombrePaciente">Nombre Paciente</option>
+                    <option value="aplicaPrivacidadDatos">Aplica Privacidad Datos</option>
+                    <option value="cedulaPrivacidadDatos">Cédula Privacidad Datos</option>
+                    <option value="tipoIdentificPrivDatos">Tipo Identif. Privacidad Datos</option>
+                    <option value="pacPacNumeroPrivDatos">Número Paciente Privacidad Datos</option>
+                    <option value="nombrePacientePrivacidadDatos">Nombre Paciente Privacidad Datos</option>
+                </select>
+            </div>
+
+            <div class="opcion">
+                <span>Valor Filtro</span>
+                <input type="text" class="valor-filtro" placeholder="Buscar">
+            </div>
+
+            <div class="opcion">
+                <span>Filtros Adicionales</span>
+                <select class="filtros-adicionales select-filter">
+                    <option value="" disabled selected>Ninguno</option>
+
+                    <option value="codigoMensaje">Cód. Mensaje</option>
+                    <option value="idTicket">ID Ticket</option>
+                    <option value="codigoHistoricoMensaje">Cód. Histórico Mensaje</option>
+                    <option value="codigoPlantilla">Cód. Plantilla</option>
+                    <option value="nombrePlantilla">Nombre Plantilla</option>
+                    <option value="origenPlantilla">Origen Plantilla</option>
+                    <option value="codigoHomologacionPlantilla">Cód. Homologación Plantilla</option>
+                    <option value="codigoTipoMensaje">Cód. Tipo Mensaje</option>
+                    <option value="nombreTipoMensaje">Nombre Tipo Mensaje</option>
+                    <option value="claseNotify">Clase Notify</option>
+                    <option value="userIdNotify">Usuario Notify</option>
+                    <option value="idEmpresaHomologacion">ID Empresa Homologación</option>
+
+                    <option value="fechaIngreso">Fecha Ingreso</option>
+                    <option value="fechaEnviado">Fecha Enviado</option>
+                    <option value="fechaMailAbierto">Fecha Mail Abierto</option>
+                    <option value="fechaMailClick">Fecha Mail Click</option>
+                    <option value="fechaError">Fecha Error (Rebote/Fallo)</option>
+
+                    <option value="correoDestinatario">Correo Destinatario</option>
+                    <option value="correoConCopia">Correo Con Copia (CC)</option>
+                    <option value="correoConCopiaOculta">Correo Con Copia Oculta (CCO)</option>
+                    <option value="asunto">Asunto</option>
+
+                    <option value="estado">Estado General</option>
+                    <option value="procesado">Procesado (Sí/No)</option>
+                    <option value="enviado">Enviado (Sí/No)</option>
+                    <option value="error">Error (Sí/No)</option>
+                    <option value="esRebotado">Es Rebotado (Sí/No)</option>
+                    <option value="esListaNegra">Es Lista Negra (Sí/No)</option>
+                    <option value="mailAbierto">Mail Abierto (Sí/No)</option>
+                    <option value="mailClick">Mail Click (Sí/No)</option>
+                    <option value="mensajeError">Mensaje Error (Detalle)</option>
+                    <option value="mensajeErrorDespachoMail">Error Despacho Mail</option>
+                    <option value="mensajeErrorStatusMail">Error Status Mail</option>
+                    <option value="esEnviadoColaFallo">Enviado a Cola Fallo (Sí/No)</option>
+
+                    <option value="origenInvocacion">Origen Invocación</option>
+                    <option value="tieneVariables">Tiene Variables (Sí/No)</option>
+                    <option value="tieneAdjuntos">Tiene Adjuntos (Sí/No)</option>
+                    <option value="cantIntentosDespachoMail">Intentos Despacho Mail</option>
+                    <option value="cantIntentosStatusMail">Intentos Status Mail</option>
+
+                    <option value="pacPacNumero">Número Paciente</option>
+                    <option value="nombrePaciente">Nombre Paciente</option>
+                    <option value="aplicaPrivacidadDatos">Aplica Privacidad Datos</option>
+                    <option value="cedulaPrivacidadDatos">Cédula Privacidad Datos</option>
+                    <option value="tipoIdentificPrivDatos">Tipo Identif. Privacidad Datos</option>
+                    <option value="pacPacNumeroPrivDatos">Número Paciente Privacidad Datos</option>
+                    <option value="nombrePacientePrivacidadDatos">Nombre Paciente Privacidad Datos</option>
+                </select>
+            </div>
+
+            <div class="opcion">
+                <span>Fecha Desde</span>
+                <input type="date" class="fecha-desde">
+            </div>
+
+            <div class="opcion">
+                <span>Fecha Hasta</span>
+                <input type="date" class="fecha-hasta">
+            </div>
+
+            <div class="opcion boton-accion">
+                <span>&nbsp;</span>
+                <div class="contenedor-boton-icono">
+                    <input type="button" class="btn-limpiar" value="">
+                    <i class="fa-solid fa-broom"></i>
+                </div>
+            </div>
+
+            <div class="opcion boton-accion">
+                <span>&nbsp;</span>
+                <div class="contenedor-boton-icono">
+                    <input type="submit" class="btn-buscar" value="Buscar">
+                </div>
+            </div>
+
+            <div class="opcion archivo">
+                <span>&nbsp;</span>
+
+                <span>Reporte Email: </span>
+                <img src="assets/images/extension-xls.png" alt="">
+            </div>
+        </div>
+
+
+        <div class="tabla">
+            <div class="table-responsive">
+                <table class="table tabla-dashboard">
+                    <thead>
+                        <tr>
+                            <th>Cód. Mensaje</th>
+                            <th>Fecha Ingreso</th>
+                            <th>Origen Plantilla</th>
+                            <th>ID Ticket</th>
+                            <th>Correo Destinatario</th>
+                            <th>Correo Con Copia</th>
+                            <th>Correo Con Copia Oculta</th>
+                            <th>Enviado</th>
+                            <th>Error</th>
+                            <th>Es Rebotado</th>
+                            <th>Es Lista Negra</th>
+                            <th>Email Abierto</th>
+                            <th>Email Click</th>
+                            <th>Mensaje Error</th>
+                            <th>Origen Invocacion</th>
+                            <th>Tiene Variables</th>
+                            <th>Tiene Adjuntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of arreglo">
+                            <td>{{ item.codigoMensaje }}</td>
+                            <td>{{ item.fechaIngreso }}</td>
+                            <td>{{ item.origenPlantilla }}</td>
+                            <td>{{ item.idTicket }}</td>
+                            <td>{{ item.correoDestinatario }}</td>
+                            <td>{{ item.correoConCopia }}</td>
+                            <td>{{ item.correoConCopiaOculta }}</td>
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.enviado"
+                                    [class.fa-circle-exclamation]="!item.enviado"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.error"
+                                    [class.fa-circle-exclamation]="item.error"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.esRebotado"
+                                    [class.fa-circle-exclamation]="item.esRebotado"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="!item.esListaNegra"
+                                    [class.fa-circle-exclamation]="item.esListaNegra"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.mailAbierto"
+                                    [class.fa-circle-exclamation]="!item.mailAbierto"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.mailClick"
+                                    [class.fa-circle-exclamation]="!item.mailClick"></i> </td>
+
+                            <td>{{ item.mensajeError }}</td>
+                            <td>{{ item.origenInvocacion }}</td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.tieneVariables"
+                                    [class.fa-circle-exclamation]="!item.tieneVariables"></i> </td>
+
+                            <td> <i class="fa-solid" [class.fa-circle-check]="item.tieneAdjuntos"
+                                    [class.fa-circle-exclamation]="!item.tieneAdjuntos"></i> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination-container">
+                <nav aria-label="Navegación de páginas">
+                    <ul class="pagination pagination-md justify-content-center">
+                        <li class="page-item disabled"> <a class="page-link" href="#" aria-label="Anterior"> <span
+                                    aria-hidden="true">&laquo;</span> </a> </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"> <a class="page-link" href="#" aria-label="Siguiente"> <span
+                                    aria-hidden="true">&raquo;</span> </a> </li>
+                    </ul>
+                </nav>
+                <div class="page-info"> (Página 1 de 3395) </div>
+            </div>
+        </div>
     </div>
 </div>

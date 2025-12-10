@@ -23,9 +23,27 @@ const routes: Routes = [
           { path: 'dashboard', component: DashboardComponent }
         ]
       },
-      { path: 'sucursal_2', component: SucursalComponent },
-      { path: 'sucursal_3', component: SucursalComponent },
-      { path: 'sucursal_4', component: SucursalComponent },
+      {
+        path: 'sucursal_2', component: SucursalComponent,
+        children: [
+          { path: '', component: SucursalContentComponent },
+          { path: 'dashboard', component: DashboardComponent }
+        ]
+      },
+      {
+        path: 'sucursal_3', component: SucursalComponent,
+        children: [
+          { path: '', component: SucursalContentComponent },
+          { path: 'dashboard', component: DashboardComponent }
+        ]
+      },
+      {
+        path: 'sucursal_4', component: SucursalComponent,
+        children: [
+          { path: '', component: SucursalContentComponent },
+          { path: 'dashboard', component: DashboardComponent }
+        ]
+      }
     ]
   }
 
