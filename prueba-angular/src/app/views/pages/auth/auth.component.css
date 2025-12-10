@@ -197,3 +197,14 @@
         opacity: 1;
     }
 }
+
+@media (max-width: 950px) {
+    .formulario-auth {
+        width: 600px;
+    }
+
+    .title-welcome,
+    .title-login {
+        font-size: 1.2rem;
+    }
+}
