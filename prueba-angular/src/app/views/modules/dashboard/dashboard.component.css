@@ -1,0 +1,25 @@
+:host {
+    flex: 1;
+    display: flex;
+}
+
+.dashboard{
+    width: 100%;
+    padding: 1rem;
+    background-color: #fff;
+    flex: 1;
+}
+
+.cabecera,.contenedor-tabla{
+    width: 100%;
+}
+
+.cabecera{
+    height: 35%;
+    background-color: red;
+    padding: 1rem 10rem;
+}
+
+.contenedor-tabla{
+    height: 65%;
+}

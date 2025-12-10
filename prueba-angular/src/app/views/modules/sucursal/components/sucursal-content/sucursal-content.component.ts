@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
-  selector: 'app-sucursal',
-  templateUrl: './sucursal.component.html',
-  styleUrls: ['./sucursal.component.css']
+  selector: 'app-sucursal-content',
+  templateUrl: './sucursal-content.component.html',
+  styleUrls: ['./sucursal-content.component.css']
 })
-export class SucursalComponent implements OnInit {
+export class SucursalContentComponent implements OnInit {
 
-  sucursalName = '';
+ sucursalName = '';
 
   constructor(private router: Router) {}
 
@@ -19,4 +19,5 @@ export class SucursalComponent implements OnInit {
     if (url.includes('sucursal_3')) this.sucursalName = 'Sucursal 3';
     if (url.includes('sucursal_4')) this.sucursalName = 'Sucursal 4';
   }
+
 }

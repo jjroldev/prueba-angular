@@ -1,0 +1,26 @@
+.sucursal{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sucursal-body {
+  height: 100%;
+  display: flex;
+}
+
+.sucursal-ayuda{
+    padding: 1.2rem 4rem;
+    background-color: rgb(48, 202, 127);
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sucursal-ayuda span{
+    font-size: 1rem;
+    font-weight: 400;
+    cursor: pointer;
+}
